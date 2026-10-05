@@ -124,8 +124,10 @@
     host.classList.remove('bubble-wide');
     bubble.style.left = '';
     bubble.style.width = '';
+    // Away from home (tour), the bubble sits beside Nimbus at the same height.
+    host.classList.toggle('bubble-side', !!pos);
     host.classList.toggle('bubble-left', c.x > vw * 0.6);
-    host.classList.toggle('bubble-below', c.y < 220);
+    host.classList.toggle('bubble-below', !pos && c.y < 220);
   }
 
   /* ---------- Position ---------- */
@@ -164,10 +166,12 @@
         goHome();
       } else {
         var s = size(), vw = window.innerWidth, vh = window.innerHeight;
-        // Perch just left of the target, a little below its top; clamp inside the viewport.
-        var x = rect.left - s - 8;
-        if (x < 8) x = Math.min(vw - s - 8, rect.right + 8);
-        var y = Math.min(vh - s - 8, Math.max(76, rect.top + Math.min(rect.height, 120) / 2 - s / 2));
+        // Perch just below the target (or above it if there's no room), so Nimbus and its bubble
+        // never cover what they're pointing at.
+        var x = Math.min(vw - s - 8, Math.max(8, rect.left - 6));
+        var y = rect.bottom + 10;
+        if (y + s > vh - 8) y = rect.top - s - 10;
+        if (y < 76) y = Math.min(vh - s - 8, Math.max(76, rect.top + 12)); // very tall target
         pos = { x: x, y: y };
         host.classList.remove('docked');
         host.classList.add('away');

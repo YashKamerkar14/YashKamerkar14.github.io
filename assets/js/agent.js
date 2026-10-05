@@ -46,12 +46,12 @@
     var wrap = document.createElement('div');
     wrap.className = 'buddy-menu';
     wrap.appendChild(chip('Show me around', function () { Portfolio.startTour(); }));
-    wrap.appendChild(chip('Ask a question', function () { Portfolio.openPalette(); }));
+    wrap.appendChild(chip('Search the site', function () { Portfolio.openPalette(); }));
     wrap.appendChild(chip('Tell me a fun fact', funFact));
     wrap.appendChild(chip('Contact Yash', function () {
       Portfolio.scrollTo(document.getElementById('contact')).then(function () {
-        var note = document.getElementById('plane-note');
-        if (note) note.focus({ preventScroll: true });
+        var copy = document.getElementById('email-copy');
+        if (copy) copy.focus({ preventScroll: true });
       });
     }));
     Buddy.set('wave');
@@ -89,14 +89,9 @@
      Reacting to the visitor
      ===================================================================== */
   // What Nimbus says the first time each section comes into view (once per visit, so it never nags).
+  // Nimbus greets once, then only reacts to what the visitor does (search, puzzle, penalties).
   var SECTION_LINES = {
-    top: ['wave', 'Hi! I\'m ' + Buddy.name + ', Yash\'s buddy. Click me anytime!'],
-    about: ['reading', 'Short version: 3 years of backend + AI work.'],
-    experience: ['reading', 'Uber RAG: 15 min → under 50 s. Nice.'],
-    projects: ['wave', 'FlightSense got published on arXiv!'],
-    skills: ['typing', 'Counting tools… 54 of them!'],
-    'off-the-clock': ['wave', 'GGMU! Fancy a penalty?'],
-    contact: ['wave', 'Send Yash a paper plane! ✈']
+    top: ['wave', 'Hi! I\'m ' + Buddy.name + ', Yash\'s buddy. Click me anytime!']
   };
   var seen = {};
 
@@ -186,19 +181,15 @@
 
   var STEPS = [
     { target: '#tour-start', state: 'wave',
-      say: 'Hi! I\'m ' + Buddy.name + '. Let me show you the best bits of Yash\'s work. Scroll or press Esc to take over anytime.' },
+      say: 'Hi! I\'m ' + Buddy.name + '. Four quick stops through Yash\'s best work. Scroll or press Esc to take over anytime.' },
     { target: '#hl-uber', state: 'reading',
-      say: 'Headline result: at Uber, Yash\'s RAG assistant cut policy lookups from 15 minutes to under 50 seconds.' },
-    { target: '#uber-rag', state: 'reading',
-      say: 'How: retrieval-augmented generation with LangChain, the OpenAI API and Pinecone, over 12,000 compliance documents.' },
+      say: 'At Uber, Yash built a RAG assistant (LangChain, OpenAI, Pinecone) that cut policy lookups from 15 minutes to under 50 seconds across 12,000 documents.' },
     { target: '#paper-link', state: 'wave',
       say: 'He also co-authored FlightSense on arXiv: a flight-delay model with 0.879 AUC on 7.07 million flights.' },
-    { action: 'search', state: 'typing',
-      say: 'Got a specific question? The page can answer it. Watch me search for "kubernetes".' },
     { action: 'penalty', state: 'wave',
       say: 'Off the clock, Yash is a Manchester United fan. My turn to take a penalty!' },
-    { target: '#plane-note', state: 'wave',
-      say: 'That\'s the tour! Your move: write Yash a note and send it as a paper plane ✈' }
+    { target: '#email-copy', state: 'wave',
+      say: 'That\'s the tour! Copy Yash\'s email, or send him a paper plane below ✈' }
   ];
 
   var cancelled = false;
@@ -251,25 +242,6 @@
     await wait(readingTime(step.say)); guard();
   }
 
-  async function runSearch(index, step) {
-    focusOn(null);
-    Buddy.hush();
-    await Buddy.moveTo(null); guard();
-    narrate(index, step.say, 'typing');
-    await wait(2400); guard();
-    Portfolio.openPalette();
-    Buddy.set('typing');
-    var input = document.getElementById('palette-input');
-    var query = 'kubernetes';
-    for (var i = 1; i <= query.length; i++) {
-      input.value = query.slice(0, i);
-      input.dispatchEvent(new Event('input'));
-      await wait(120); guard();
-    }
-    await wait(2800); guard();
-    Portfolio.closePalette();
-  }
-
   async function runPenalty(index, step) {
     Buddy.hush();
     Portfolio.openPenalty({ focus: false });
@@ -298,8 +270,7 @@
     try {
       for (var i = 0; i < STEPS.length; i++) {
         var s = STEPS[i];
-        if (s.action === 'search') await runSearch(i, s);
-        else if (s.action === 'penalty') await runPenalty(i, s);
+        if (s.action === 'penalty') await runPenalty(i, s);
         else await visit(s.target, i, s);
         if (i === 0 && stopBtn) stopBtn.focus({ preventScroll: true });
       }

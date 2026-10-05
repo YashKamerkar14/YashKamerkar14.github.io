@@ -6,6 +6,23 @@
 (function () {
   'use strict';
 
+  var copyBtn = document.getElementById('email-copy');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var address = copyBtn.getAttribute('data-email');
+      var done = function () {
+        copyBtn.querySelector('.copy-label').textContent = 'Copied!';
+        if (window.Portfolio && window.Portfolio.toast) window.Portfolio.toast('Email copied: ' + address);
+        setTimeout(function () { copyBtn.querySelector('.copy-label').textContent = 'Copy'; }, 2200);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(address).then(done, function () { window.prompt('Copy email:', address); });
+      } else {
+        window.prompt('Copy email:', address);
+      }
+    });
+  }
+
   var form = document.getElementById('plane-form');
   if (!form) return;
 

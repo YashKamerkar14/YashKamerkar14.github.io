@@ -44,6 +44,7 @@
   function readableText(node) {
     if (node.nodeType === 3) return node.data;
     if (node.nodeType !== 1) return '';
+    if (node.getAttribute('aria-hidden') === 'true') return ''; // decorative, e.g. margin notes
     var sep = INLINE_TAGS.test(node.tagName) ? '' : ' ';
     var out = '';
     for (var child = node.firstChild; child; child = child.nextSibling) {
@@ -223,6 +224,8 @@
 
   /** Scrolls to a passage, reveals it if it was inside a collapsed/hidden region, and flashes it. */
   function jumpTo(el) {
+    var collapsed = el.closest('details');
+    if (collapsed) collapsed.open = true; // results can live in "show more" lists
     el.classList.add('in'); // in case reveal-on-scroll has not fired yet
     var section = el.closest('.reveal');
     if (section) section.classList.add('in');

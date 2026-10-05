@@ -132,15 +132,22 @@
   /* ---------- Reveal on scroll ---------- */
   var revealEls = document.querySelectorAll('.reveal, .mask-reveal');
   if ('IntersectionObserver' in window && !reducedMotion.matches) {
+    // Map each observed element to the elements it reveals. Mask-reveal headings start fully
+    // clipped (zero visible area), so they are triggered by their unclipped parent instead.
+    var triggers = new Map();
+    Array.prototype.forEach.call(revealEls, function (el) {
+      var watch = el.classList.contains('mask-reveal') ? el.parentElement : el;
+      if (!triggers.has(watch)) triggers.set(watch, []);
+      triggers.get(watch).push(el);
+    });
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          revealObserver.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        triggers.get(entry.target).forEach(function (el) { el.classList.add('in'); });
+        revealObserver.unobserve(entry.target);
       });
     }, { threshold: 0.12 });
-    Array.prototype.forEach.call(revealEls, function (el) { revealObserver.observe(el); });
+    triggers.forEach(function (_, watch) { revealObserver.observe(watch); });
   } else {
     Array.prototype.forEach.call(revealEls, function (el) { el.classList.add('in'); });
   }

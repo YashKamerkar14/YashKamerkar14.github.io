@@ -30,20 +30,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
-<link rel="stylesheet" href="assets/vendor/lenis.css?v=25">
-<link rel="stylesheet" href="assets/css/main.css?v=25">
-<script src="assets/js/boot.js?v=25"></script>
-<script src="assets/vendor/lenis.min.js?v=25" defer></script>
-<script src="assets/js/search.js?v=25" defer></script>
-<script src="assets/js/main.js?v=25" defer></script>
-<script src="assets/js/clouds.js?v=25" defer></script>
-<script src="assets/js/palette.js?v=25" defer></script>
-<script src="assets/js/penalty.js?v=25" defer></script>
-<script src="assets/js/buddy.js?v=25" defer></script>
-<script src="assets/js/agent.js?v=25" defer></script>
-<script src="assets/js/contact.js?v=25" defer></script>
-<script src="assets/js/skills.js?v=25" defer></script>
-<script src="assets/js/puzzle.js?v=25" defer></script>
+<link rel="stylesheet" href="assets/vendor/lenis.css?v=27">
+<link rel="stylesheet" href="assets/css/main.css?v=27">
+<script src="assets/js/boot.js?v=27"></script>
+<script src="assets/vendor/lenis.min.js?v=27" defer></script>
+<script src="assets/js/search.js?v=27" defer></script>
+<script src="assets/js/main.js?v=27" defer></script>
+<script src="assets/js/clouds.js?v=27" defer></script>
+<script src="assets/js/palette.js?v=27" defer></script>
+<script src="assets/js/penalty.js?v=27" defer></script>
+<script src="assets/js/buddy.js?v=27" defer></script>
+<script src="assets/js/agent.js?v=27" defer></script>
+<script src="assets/js/contact.js?v=27" defer></script>
+<script src="assets/js/skills.js?v=27" defer></script>
+<script src="assets/js/puzzle.js?v=27" defer></script>
 
 <script type="application/ld+json">
 {
@@ -99,7 +99,7 @@
     </div>
     <div class="nav-actions">
       <button type="button" class="chip" data-open-palette aria-haspopup="dialog" aria-controls="palette">
-        <svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><span class="chip-label">Ask</span><kbd data-shortcut>Ctrl K</kbd>
+        <svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><span class="chip-label">Search</span><kbd data-shortcut>Ctrl K</kbd>
       </button>
       <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span aria-hidden="true">&#8801;</span></button>
     </div>
@@ -119,15 +119,15 @@
         <li>San Jose, California</li>
       </ul>
       <div class="cta-row">
-        <button type="button" class="btn btn-gold playful" id="tour-start" data-magnetic>
-          <span class="btn-dot" aria-hidden="true"></span>Take the tour with Nimbus
-        </button>
-        <a class="btn btn-line" href="#experience" data-magnetic>See my work</a>
+        <a class="btn btn-gold" href="#experience" data-magnetic>See my work <span aria-hidden="true">&#8594;</span></a>
         <a class="btn btn-line" href="Yash_Mahesh_Kamerkar_Resume.pdf" download="Yash_Kamerkar_Resume.pdf" data-magnetic>Resume <span aria-hidden="true">&#8595;</span></a>
+        <button type="button" class="btn btn-line btn-tour playful" id="tour-start" data-magnetic>
+          <span class="btn-dot" aria-hidden="true"></span>Tour with Nimbus
+        </button>
       </div>
     </div>
     <picture class="hero-photo" data-depth="-10">
-      <source srcset="assets/img/yash-280.webp 280w, assets/img/yash.webp 460w" sizes="(max-width: 760px) 132px, 260px" type="image/webp">
+      <source srcset="assets/img/yash-280.webp 280w, assets/img/yash.webp 460w" sizes="(max-width: 760px) 84px, 260px" type="image/webp">
       <img src="assets/img/yash.jpg" width="460" height="460" alt="Portrait of Yash Kamerkar" fetchpriority="high">
     </picture>
   </div>
@@ -175,13 +175,18 @@
           <p class="date"><time datetime="2023-07">Jul 2023</time> – <time datetime="2024-08">Aug 2024</time></p>
         </div>
         <ul>
-          <li data-search="Universal Courier">Integrated 3 third-party carrier <b>REST APIs</b> (UPS, FedEx, USPS) using <b>Python</b> and <b>FastAPI</b> to consolidate real-time shipment status for 8,000 daily parcels into a unified customer-facing tracking dashboard.</li>
-          <li data-search="Universal Courier">Designed a delivery <b>ETA prediction model</b> using <b>scikit-learn</b> trained on 2 years of historical shipment records, reducing average estimation error from 3.4 hours to 1.1 hours across 5 regional delivery zones.</li>
           <li data-search="Universal Courier"><span class="margin-note playful mn-right" aria-hidden="true"><svg class="mn-arrow" viewBox="0 0 60 30" aria-hidden="true" focusable="false"><path d="M58 6C40 1 20 6 6 21"/><path d="M6 21 8.5 11M6 21 16 19.5"/></svg>customers waited 12 min, not 6 hours</span>Built an <b>LLM</b>-powered customer support assistant using <b>LangChain</b> and <b>OpenAI API</b> to handle inbound delivery inquiry tickets, automating resolution of 420 repetitive queries per month and cutting average first-response time from 6 hours to 12 minutes.</li>
-          <li data-search="Universal Courier">Constructed <b>REST API</b> endpoints in <b>FastAPI</b> to expose real-time route and package status data to 3 internal logistics dashboards, supporting 150 concurrent dispatcher users during peak morning scheduling windows.</li>
+          <li data-search="Universal Courier">Designed a delivery <b>ETA prediction model</b> using <b>scikit-learn</b> trained on 2 years of historical shipment records, reducing average estimation error from 3.4 hours to 1.1 hours across 5 regional delivery zones.</li>
           <li data-search="Universal Courier">Developed an <b>ETL pipeline</b> in <b>Python</b> using <b>Pandas</b> and <b>SQLAlchemy</b> that ingested and normalized 180 GB of daily shipment records from 6 warehouse management systems, enabling downstream analytics and executive reporting.</li>
-          <li data-search="Universal Courier">Automated nightly route-optimization batch jobs using <b>Jenkins</b> and <b>Docker</b> on Microsoft <b>Azure</b>, compressing manual scheduling overhead from 4 hours to 35 minutes per dispatch cycle across 3 regional distribution hubs.</li>
         </ul>
+        <details class="more">
+          <summary>Show 3 more results</summary>
+          <ul>
+            <li data-search="Universal Courier">Integrated 3 third-party carrier <b>REST APIs</b> (UPS, FedEx, USPS) using <b>Python</b> and <b>FastAPI</b> to consolidate real-time shipment status for 8,000 daily parcels into a unified customer-facing tracking dashboard.</li>
+            <li data-search="Universal Courier">Constructed <b>REST API</b> endpoints in <b>FastAPI</b> to expose real-time route and package status data to 3 internal logistics dashboards, supporting 150 concurrent dispatcher users during peak morning scheduling windows.</li>
+            <li data-search="Universal Courier">Automated nightly route-optimization batch jobs using <b>Jenkins</b> and <b>Docker</b> on Microsoft <b>Azure</b>, compressing manual scheduling overhead from 4 hours to 35 minutes per dispatch cycle across 3 regional distribution hubs.</li>
+          </ul>
+        </details>
       </li>
       <li class="tl-item reveal" id="exp-dell">
         <div class="tl-head">
@@ -190,14 +195,19 @@
           <p class="date"><time datetime="2021-09">Sep 2021</time> – <time datetime="2023-07">Jul 2023</time></p>
         </div>
         <ul>
+          <li data-search="Dell Technologies"><span class="margin-note playful mn-right" aria-hidden="true"><svg class="mn-arrow" viewBox="0 0 60 30" aria-hidden="true" focusable="false"><path d="M58 6C40 1 20 6 6 21"/><path d="M6 21 8.5 11M6 21 16 19.5"/></svg>6× faster!</span>Optimized <b>PostgreSQL</b> query performance for 5 high-frequency reporting endpoints by introducing composite indexes and rewriting 3 N+1 query patterns, reducing average database response time from 2.1 seconds to 340 ms.</li>
           <li data-search="Dell Technologies">Implemented <b>order-management microservices</b> in <b>Java 11</b> and <b>Spring Boot 2.x</b> for Dell's supply chain platform, processing 45,000 daily purchase requests across 6 interconnected service modules.</li>
           <li data-search="Dell Technologies">Migrated 3 legacy Oracle PL/SQL batch jobs to <b>Python</b>-based <b>ETL pipelines</b> using <b>Pandas</b> and <b>SQLAlchemy</b>, reducing nightly batch processing time from 6 hours to 2.5 hours.</li>
-          <li data-search="Dell Technologies">Authored <b>JUnit 5</b> and <b>Mockito</b> test suites for 12 core service modules, eliminating 14 critical regression defects before each production release and adding 1,500 net tested lines across the codebase.</li>
-          <li data-search="Dell Technologies">Deployed containerized <b>Spring Boot</b> services via <b>Docker</b> on <b>Kubernetes</b> clusters, enabling zero-downtime rolling updates across 4 staging and production environments.</li>
-          <li data-search="Dell Technologies">Streamlined <b>RESTful API</b> contracts for 3 product catalog endpoints using <b>Spring MVC</b> and <b>Hibernate ORM</b>, cutting internal portal integration onboarding time from 5 days to 2 days.</li>
-          <li data-search="Dell Technologies"><span class="margin-note playful mn-right" aria-hidden="true"><svg class="mn-arrow" viewBox="0 0 60 30" aria-hidden="true" focusable="false"><path d="M58 6C40 1 20 6 6 21"/><path d="M6 21 8.5 11M6 21 16 19.5"/></svg>6× faster!</span>Optimized <b>PostgreSQL</b> query performance for 5 high-frequency reporting endpoints by introducing composite indexes and rewriting 3 N+1 query patterns, reducing average database response time from 2.1 seconds to 340 ms.</li>
-          <li data-search="Dell Technologies">Refactored a monolithic inventory reporting module into 2 independently deployable <b>Spring Boot</b> services, cutting module build time from 14 minutes to 5 minutes and removing 3 cross-team deployment dependencies.</li>
         </ul>
+        <details class="more">
+          <summary>Show 4 more results</summary>
+          <ul>
+            <li data-search="Dell Technologies">Authored <b>JUnit 5</b> and <b>Mockito</b> test suites for 12 core service modules, eliminating 14 critical regression defects before each production release and adding 1,500 net tested lines across the codebase.</li>
+            <li data-search="Dell Technologies">Deployed containerized <b>Spring Boot</b> services via <b>Docker</b> on <b>Kubernetes</b> clusters, enabling zero-downtime rolling updates across 4 staging and production environments.</li>
+            <li data-search="Dell Technologies">Streamlined <b>RESTful API</b> contracts for 3 product catalog endpoints using <b>Spring MVC</b> and <b>Hibernate ORM</b>, cutting internal portal integration onboarding time from 5 days to 2 days.</li>
+            <li data-search="Dell Technologies">Refactored a monolithic inventory reporting module into 2 independently deployable <b>Spring Boot</b> services, cutting module build time from 14 minutes to 5 minutes and removing 3 cross-team deployment dependencies.</li>
+          </ul>
+        </details>
       </li>
       <li class="tl-item tl-edu reveal" id="education">
         <div class="tl-head" data-search="Education">
@@ -306,7 +316,7 @@
         <p class="fix-label">The fix: load the customers in the same query</p>
 <pre class="code-fix"><code>orders = db.query(Order).options(joinedload(Order.customer)).all()
 rows = [(o.id, o.customer.name, o.total) for o in orders]</code></pre>
-        <p class="puzzle-real">Not a made-up example. At Dell, Yash rewrote 3 N+1 query patterns and added composite indexes, cutting average response time from <strong>2.1 s to 340 ms</strong>.</p>
+        <p class="puzzle-real">Not a made-up example. At Dell, I rewrote 3 N+1 query patterns and added composite indexes, cutting average response time from <strong>2.1 s to 340 ms</strong>.</p>
       </div>
     </div>
   </div>
@@ -362,13 +372,20 @@ rows = [(o.id, o.customer.name, o.total) for o in orders]</code></pre>
       <span class="sec-step" aria-hidden="true">06 — Say hello</span>
       <h2 id="contact-title" class="mask-reveal">Let's build something <em>that ships.</em></h2>
       <p data-search="Contact">I'm open to Software Engineering and AI Engineering roles. If you're building something interesting, I'd like to hear about it.</p>
+      <div class="email-row">
+        <a class="email-big" href="mailto:yashkamerkar1407@gmail.com">yashkamerkar1407@gmail.com</a>
+        <button type="button" class="btn btn-gold" id="email-copy" data-email="yashkamerkar1407@gmail.com" data-magnetic>
+          <svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span class="copy-label">Copy</span><span class="sr-only"> email address</span>
+        </button>
+      </div>
+      <p class="links-label">Or send a paper plane</p>
       <form class="plane-form" id="plane-form" novalidate>
         <label class="sr-only" for="plane-note">Your note to Yash</label>
         <textarea id="plane-note" rows="3" maxlength="800" placeholder="Hi Yash, we're building… and I'd love to chat about…" aria-describedby="plane-hint plane-error"></textarea>
         <p class="plane-error" id="plane-error" role="alert" hidden></p>
         <div class="plane-row">
           <span class="plane-hint" id="plane-hint">Opens your email app with this note ready to send.</span>
-          <button type="submit" class="btn btn-gold" data-magnetic>Send as a paper plane <span aria-hidden="true">✈</span></button>
+          <button type="submit" class="btn btn-line" data-magnetic>Send as a paper plane <span aria-hidden="true">✈</span></button>
         </div>
         <p class="plane-status" id="plane-status" role="status" aria-live="polite"></p>
       </form>
@@ -380,7 +397,6 @@ rows = [(o.id, o.customer.name, o.total) for o in orders]</code></pre>
         <a class="btn btn-line" href="https://arxiv.org/abs/2605.07364" target="_blank" rel="noopener" data-magnetic>Publication <span aria-hidden="true">&#8599;</span></a>
         <a class="btn btn-line" href="Yash_Mahesh_Kamerkar_Resume.pdf" download="Yash_Kamerkar_Resume.pdf" data-magnetic>Resume (PDF)</a>
       </div>
-      <p class="contact-email">yashkamerkar1407@gmail.com</p>
     </div>
   </div>
 </section>
@@ -389,7 +405,7 @@ rows = [(o.id, o.customer.name, o.total) for o in orders]</code></pre>
 <footer class="site-footer">
   <div class="wrap footer-row">
     <span>&copy; 2026 Yash Mahesh Kamerkar</span>
-    <span class="footer-hint">Press <kbd data-shortcut>Ctrl K</kbd> to ask anything, or type <kbd>ggmu</kbd>.</span>
+    <span class="footer-hint">Press <kbd data-shortcut>Ctrl K</kbd> to search, or type <kbd>ggmu</kbd>.</span>
   </div>
 </footer>
 
@@ -400,10 +416,10 @@ rows = [(o.id, o.customer.name, o.total) for o in orders]</code></pre>
 
 <div class="palette-overlay" id="palette-overlay" hidden data-lenis-prevent>
   <div class="palette" id="palette" role="dialog" aria-modal="true" aria-labelledby="palette-title">
-    <h2 class="sr-only" id="palette-title">Ask about Yash</h2>
+    <h2 class="sr-only" id="palette-title">Search Yash's work</h2>
     <div class="palette-input-row">
       <svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
-      <input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Ask about Yash: “kubernetes”, “RAG”, “latency”…">
+      <input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search Yash's work: “kubernetes”, “RAG”, “latency”…">
       <kbd>Esc</kbd>
     </div>
     <ul id="palette-list" role="listbox" aria-label="Results"></ul>

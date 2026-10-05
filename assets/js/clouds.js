@@ -243,12 +243,21 @@
     }
   }
 
+  // Battery: the sky drifts slowly, so 30fps is plenty while the visitor interacts and ~12fps
+  // is plenty once they've been idle for a few seconds.
+  var lastInput = performance.now();
+  ['pointermove', 'scroll', 'keydown', 'touchstart'].forEach(function (t) {
+    window.addEventListener(t, function () { lastInput = performance.now(); }, { passive: true });
+  });
+
   function frame(now) {
-    var dt = last ? Math.min(0.05, (now - last) / 1000) : 0.016;
+    rafId = requestAnimationFrame(frame);
+    var interval = now - lastInput > 5000 ? 1000 / 12 : 1000 / 30;
+    if (last && now - last < interval) return;
+    var dt = last ? Math.min(0.1, (now - last) / 1000) : 0.016;
     last = now;
     step(dt);
     draw(now / 1000);
-    rafId = requestAnimationFrame(frame);
   }
 
   function start() {
