@@ -105,26 +105,55 @@
     host.classList.remove('talking');
   }
 
-  /** Flips the bubble so it always opens toward the middle of the screen. */
+  /**
+   * Desktop: the bubble opens toward the middle of the screen.
+   * Phones: it spans the screen width (minus a margin), above or below Nimbus, so it never overflows.
+   */
   function placeBubble() {
     var c = center();
-    host.classList.toggle('bubble-left', c.x > window.innerWidth * 0.6);
+    var vw = window.innerWidth;
+    if (isCompact()) {
+      var EDGE = 12;
+      host.classList.add('bubble-wide');
+      host.classList.remove('bubble-left');
+      host.classList.toggle('bubble-below', c.y < window.innerHeight / 2);
+      bubble.style.left = Math.round(EDGE - (c.x - size() / 2)) + 'px';
+      bubble.style.width = (vw - EDGE * 2) + 'px';
+      return;
+    }
+    host.classList.remove('bubble-wide');
+    bubble.style.left = '';
+    bubble.style.width = '';
+    host.classList.toggle('bubble-left', c.x > vw * 0.6);
     host.classList.toggle('bubble-below', c.y < 220);
   }
 
   /* ---------- Position ---------- */
-  var pos = null; // null = home (bottom-left corner)
+  var pos = null; // null = home
   var HOME_MARGIN = 14;
+  var navActions = document.querySelector('.nav-actions');
+  var navBar = document.querySelector('.site-nav');
   function size() { return host.offsetWidth || 84; }
+  function isCompact() { return window.innerWidth < 760; }
 
   // Always positioned with a transform from the top-left, so flying home animates smoothly.
   function place(x, y) { host.style.transform = 'translate(' + Math.round(x) + 'px,' + Math.round(y) + 'px)'; }
-  /** On phones Nimbus peeks in from the left edge so it never covers buttons. */
-  function homeX() { return isCompact() ? -Math.round(size() * 0.38) : HOME_MARGIN; }
-  function isCompact() { return window.innerWidth < 520; }
+
+  /**
+   * Home is the bottom-left corner on larger screens. On phones (when the page has a nav bar) Nimbus
+   * docks in the sticky nav, just left of the search/menu buttons, so it never covers any content.
+   */
+  function home() {
+    var s = size();
+    if (isCompact() && navActions && navBar) {
+      return { x: navActions.getBoundingClientRect().left - s - 6, y: (navBar.offsetHeight - s) / 2, docked: true };
+    }
+    return { x: HOME_MARGIN, y: window.innerHeight - s - HOME_MARGIN, docked: false };
+  }
   function goHome() {
-    host.classList.toggle('peek', isCompact());
-    place(homeX(), window.innerHeight - size() - HOME_MARGIN);
+    var h = home();
+    host.classList.toggle('docked', h.docked);
+    place(h.x, h.y);
   }
 
   function moveTo(rect) {
@@ -140,7 +169,7 @@
         if (x < 8) x = Math.min(vw - s - 8, rect.right + 8);
         var y = Math.min(vh - s - 8, Math.max(76, rect.top + Math.min(rect.height, 120) / 2 - s / 2));
         pos = { x: x, y: y };
-        host.classList.remove('peek');
+        host.classList.remove('docked');
         host.classList.add('away');
         place(x, y);
       }
@@ -157,9 +186,8 @@
   /** Centre of where Nimbus is (or is flying to), so layout never depends on a transition mid-flight. */
   function center() {
     var s = size();
-    var x = pos ? pos.x : Math.max(0, homeX());
-    var y = pos ? pos.y : window.innerHeight - s - HOME_MARGIN;
-    return { x: x + s / 2, y: y + s / 2 };
+    var at = pos || home();
+    return { x: at.x + s / 2, y: at.y + s / 2 };
   }
 
   /* ---------- Eyes follow the cursor ---------- */

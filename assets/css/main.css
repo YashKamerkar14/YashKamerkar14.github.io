@@ -159,7 +159,7 @@ h1 em { color: var(--gold); }
 .btn-dot { width: 7px; height: 7px; border-radius: 50%; background: #0A0A0B; animation: breathe 1.8s ease-in-out infinite; }
 @keyframes breathe { 50% { opacity: .3; } }
 .hero-photo img {
-  width: 260px; height: 320px; object-fit: cover; border-radius: 160px 160px 18px 18px;
+  width: 260px; height: 320px; object-fit: cover; border-radius: 14px;
   border: 1px solid var(--line-strong);
   filter: grayscale(.35) contrast(1.05) brightness(.92);
   transition: filter .6s;
@@ -468,7 +468,9 @@ section { padding: 120px 0; scroll-margin-top: 84px; }
   position: fixed; left: 0; top: 0; z-index: 210; width: 92px; height: 88px;
 }
 .buddy.ready { transition: transform .9s cubic-bezier(.5, .05, .25, 1); }
-.buddy.peek .buddy-svg { transform: rotate(18deg); transition: transform .4s; }
+.buddy.docked .b-shadow { display: none; }
+.buddy.bubble-wide .buddy-bubble { right: auto; max-width: none; border-radius: 16px; }
+.buddy.bubble-wide.bubble-below .buddy-bubble { top: calc(100% + 10px); }
 .buddy-btn {
   display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none;
   cursor: pointer; border-radius: 50%; -webkit-tap-highlight-color: transparent;
@@ -637,10 +639,10 @@ section { padding: 120px 0; scroll-margin-top: 84px; }
   .hero { min-height: 0; padding-top: 40px; }
   .hero-grid { grid-template-columns: 1fr; gap: 28px; }
   .hero-photo { order: -1; }
-  .hero-photo img { width: 96px; height: 120px; border-radius: 60px 60px 12px 12px; }
+  .hero-photo img { width: 132px; height: 165px; border-radius: 12px; }
   .facts { grid-template-columns: 1fr; }
   .scroll-cue { margin-top: 44px; }
-  section { padding: 84px 0; }
+  section { padding: 72px 0; }
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
   .skill-grid { grid-template-columns: 1fr; }
   .puzzle { grid-template-columns: 1fr; padding: 24px 18px; }
@@ -656,14 +658,38 @@ section { padding: 120px 0; scroll-margin-top: 84px; }
   .otc { padding: 26px 22px; }
   .otc:has(.pk:not([hidden])) { grid-template-columns: 1fr; }
   .palette-tag { width: 84px; }
+  /* Nimbus docks in the nav bar on phones (see buddy.js). */
+  .buddy { width: 44px; height: 42px; }
+  /* Comfortable 44px tap targets. */
+  .chip, .icon-btn { height: 44px; min-width: 44px; }
+  .icon-btn { width: 44px; }
+  .logo { padding: 8px 0; }
+  .proj-links a { display: inline-flex; align-items: center; min-height: 44px; }
+  .arch-toggle, .mini-btn { min-height: 44px; padding-left: 16px; padding-right: 16px; }
+  .code-lines button { min-height: 40px; align-items: center; }
+  .nav-links a { padding: 12px 0; }
+  /* Legible small text (nothing under ~12px). */
+  .eyebrow, .sec-step, .h1-name, .scroll-cue, .links-label { font-size: .78rem; }
+  .tag { font-size: .8rem; padding: 5px 12px; }
+  .badge, .skill-cat { font-size: .78rem; }
+  .code-lines button { font-size: .82rem; }
+  .code-bar .file { font-size: .78rem; }
+  .starmap-caption { font-size: .82rem; }
+  .tl-head .date { font-size: .8rem; }
 }
 @media (max-width: 520px) {
   .wrap { padding: 0 18px; }
-  .chip { width: 36px; padding: 0; justify-content: center; }
+  .chip { width: 44px; padding: 0; justify-content: center; }
   .chip-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .highlights { grid-template-columns: 1fr; }
   .btn { padding: 12px 18px; }
-  .buddy { width: 66px; height: 63px; }
+  .cta-row .btn { flex: 1 1 auto; justify-content: center; }
+}
+
+/* ---------- Touch screens ---------- */
+@media (hover: none) {
+  .chip kbd, .footer-hint { display: none; }
+  .hero-photo img { filter: none; }
 }
 
 /* ---------- Motion preferences ---------- */

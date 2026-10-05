@@ -79,6 +79,10 @@
   }
   menuBtn.addEventListener('click', function () { setMenu(!navLinks.classList.contains('open')); });
   navLinks.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  // Tapping anywhere outside the open menu closes it.
+  document.addEventListener('pointerdown', function (e) {
+    if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false);
+  });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && navLinks.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
   });
