@@ -1,6 +1,35 @@
 ﻿import {test,expect} from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
+test("Mettle has real destinations and its starter sends one question with source links",async({page})=>{
+ let questions=0;
+ await page.route("**/api/agents/status",route=>route.fulfill({json:{configured:true,provider:"OpenRouter"}}));
+ await page.route("**/api/agents",async route=>{
+  questions++;
+  expect(route.request().postDataJSON().question).toBe("What did Mettle find about 4-bit compression?");
+  await route.fulfill({contentType:"application/x-ndjson",body:[
+   {type:"delta",text:"On the RTX 4080 Laptop GPU, 4-bit was 12% faster, but instruction-following dropped from 48% to 9%. The accuracy result was inconclusive."},
+   {type:"sources",sources:[{label:"Mettle live benchmark",url:"https://yashkamerkar14.github.io/mettle/"}]},
+   {type:"done"}
+  ].map(event=>JSON.stringify(event)).join("\n")+"\n"});
+ });
+ await page.goto("/#work");
+ const project=page.locator("#mettle");
+ await expect(project.getByRole("link",{name:/Try it live/})).toHaveAttribute("href","https://yashkamerkar14.github.io/mettle/");
+ await expect(project.getByRole("link",{name:/Code & findings/})).toHaveAttribute("href","https://github.com/YashKamerkar14/mettle");
+ await page.getByRole("button",{name:/Search .*portfolio/}).click();
+ await page.getByRole("textbox",{name:"Search work, experience, skills, or contact"}).fill("mettle");
+ await expect(page.locator(".search-results li")).toHaveCount(2);
+ await expect(page.locator(".search-results")).not.toContainText("blinded scorer audit");
+ await page.keyboard.press("Escape");
+ await page.getByRole("button",{name:"Meet Scout and Scribe, the project AI agents"}).click();
+ expect(questions).toBe(0);
+ await page.getByRole("button",{name:"What did Mettle find about 4-bit compression?",exact:true}).click();
+ await expect(page.locator(".agent-answer")).toContainText("accuracy result was inconclusive");
+ await expect(page.locator(".agent-sources").getByRole("link",{name:/Mettle live benchmark/})).toHaveAttribute("href","https://yashkamerkar14.github.io/mettle/");
+ expect(questions).toBe(1);
+});
+
 test("public GitHub sources and the supplied Twitter profile are linked accurately",async({page})=>{
  await page.goto("/");
  await expect(page.locator("#context-window").getByRole("link",{name:/Live demo/})).toHaveAttribute("href","https://context-window-gamma.vercel.app/");

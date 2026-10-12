@@ -43,7 +43,7 @@ test("subtle mouse feedback and robot gaze preserve native actions", async ({ pa
   await expect(page.locator(".ink-cursor")).toHaveCSS("opacity", "0");
   await page.keyboard.press("Escape");
   await expect(launch).toBeFocused();
-  await page.locator(".project-preview").hover();
+  await page.locator("#context-window .project-preview").hover();
   await expect(page.locator(".project-card").first()).toHaveAttribute("data-hovering", "true");
   await page.keyboard.press("Tab");
   await expect(studio).not.toHaveAttribute("data-pointer");

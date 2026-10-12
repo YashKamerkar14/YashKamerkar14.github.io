@@ -4,6 +4,37 @@ const http=require('node:http');
 const {createAgentHandler:createHandler}=require('../../src/server/portfolio-agent.cjs');
 const createAgentHandler=options=>createHandler({provider:()=> 'openai',...options});
 
+test('Mettle questions select its own source, retain study qualifications and use one bounded call',async()=>{
+ const {selectProjects}=require('../../src/server/compact-context.cjs');
+ assert.deepEqual(selectProjects('What does WebGPU compression benchmarking show?'),['mettle']);
+ const calls=[];
+ const fakeFetch=async(url,options)=>{
+  calls.push({url,payload:options.body?JSON.parse(options.body):null});
+  if(url.includes('api.github.com')) {
+   assert.match(url,/\/mettle\/readme$/);
+   return Response.json({content:Buffer.from('Mettle benchmarks SmolLM2-360M. The RTX 4080 Laptop study is inconclusive on accuracy.').toString('base64')});
+  }
+  return new Response('data: {"choices":[{"delta":{"content":"Mettle runs on your own GPU."},"finish_reason":null}]}\n\ndata: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\ndata: [DONE]\n\n');
+ };
+ await withServer(createAgentHandler({provider:()=> 'openrouter',key:()=> 'mock-mettle-key',fetcher:fakeFetch}),async(base)=>{
+  const response=await fetch(base+'/api/agents',{method:'POST',body:JSON.stringify({question:'What did Mettle find about 4-bit compression?'})});
+  assert.equal(response.status,200);
+  const events=(await response.text()).trim().split('\n').map(line=>JSON.parse(line));
+  assert.equal(events.at(-1).type,'done');
+  assert.ok(events.find(event=>event.type==='sources').sources.some(source=>source.url==='https://yashkamerkar14.github.io/mettle/'));
+ });
+ const modelCalls=calls.filter(call=>call.url.includes('openrouter.ai'));
+ assert.equal(modelCalls.length,1);
+ assert.equal(modelCalls[0].payload.max_tokens,320);
+ const context=JSON.parse(modelCalls[0].payload.messages[1].content);
+ assert.equal(context.documents.length,1);
+ assert.equal(context.documents[0].name,'Mettle');
+ assert.equal(context.documents[0].demo,'https://yashkamerkar14.github.io/mettle/');
+ assert.match(context.documents[0].note,/RTX 4080 Laptop GPU/);
+ assert.match(context.documents[0].note,/inconclusive, not proven equivalent/);
+ assert.ok(context.documents[0].readme.length<=3000);
+});
+
 async function withServer(handler,run){
  const server=http.createServer(async(req,res)=>{if(!await handler(req,res)){res.writeHead(404);res.end();}});
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));

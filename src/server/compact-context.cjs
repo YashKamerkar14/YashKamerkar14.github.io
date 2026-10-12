@@ -8,6 +8,7 @@ function selectProjects(question) {
   'context-window': ['newsroom', 'briefing', 'fact check', 'fact-check', 'verify stories'],
   'medical-bill-auditor': ['medical', 'billing', 'bill auditor', 'eob', 'rag', 'auditing'],
   flightsense: ['flight', 'sagemaker'],
+  mettle: ['webgpu', 'wgsl', 'webllm', 'compression', 'quantization', 'quantisation', 'benchmark', 'instruction-following'],
  }[project.id] || [])].some(term => text.includes(term)));
  if (matched.length) return matched.slice(0, 2).map(project => project.id);
  if (/\b(projects?|built|builds?|demo|architecture|agents?|work)\b/.test(text) && !/\b(uber|dell|courier|experience|career|backend|employment)\b/.test(text)) {

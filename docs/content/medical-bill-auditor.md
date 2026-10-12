@@ -14,6 +14,6 @@ The README describes six deterministic billing checks, independent verification,
 
 The homepage uses one sentence, four preview technologies and demo/source links. The workflow artwork is original SVG, explicitly described as an illustration rather than a screenshot or a live audit result. Detailed metrics stay in the catalog for grounded agent answers, qualified as repository-reported synthetic evaluations. They were not independently reproduced and do not establish performance on real medical bills.
 
-The catalog, drawer and unified gallery order are Context Window, Medical Bill Auditor and FlightSense. The two-book selector was removed. FlightSense retains paper, code and case-study links; Football analysis was removed from the application at the user's request.
+The catalog, drawer and unified gallery order are Context Window, Medical Bill Auditor, FlightSense and Mettle. The two-book selector was removed. FlightSense retains paper, code and case-study links; Football analysis was removed from the application at the user's request.
 
 The pre-experiment rollback archive is unchanged. New project content should be preserved if the user later requests reverting only the drawer/shelf design.

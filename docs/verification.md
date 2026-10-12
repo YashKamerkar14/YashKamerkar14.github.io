@@ -1,6 +1,16 @@
 # Portfolio verification
 
-## Published portfolio
+## Mettle addition
+
+On 12 October 2026, Mettle was added fourth after FlightSense, with a screenshot of its actual live hero, a concise hardware-qualified summary, and its supplied benchmark and repository links. Search remains concise; Scout gains Mettle source selection, a starter question and an offline link. The portfolio does not embed or download Mettle's model.
+
+TypeScript, production build and all 16 mocked backend checks passed. All 39 browser scenarios are verified: 38 passed in the full run, and the one mouse-interaction scenario passed on a targeted rerun after its selector was made explicit for the original Context Window preview. Desktop and phone project captures were visually reviewed, with no overflow or page errors.
+
+Scout's updated catalog was deployed as dpl_HiVcAZYb6p8H7Gq5ZvDn8Dc4nWk5 to the existing production alias. Anonymous status returned HTTP 200 with configured true and the correct portfolio CORS origin. Generated frontend/backend scanning found no actual API key values in 88 files. The canonical resume hash and local rollback archive are preserved. No paid AI questions, Mettle model downloads, GPU benchmarks or crowd submissions were used for verification.
+
+See [Mettle sources and qualifications](content/mettle.md). The earlier records below describe the initial three-project site and folder cleanup.
+
+## Initial portfolio deployment
 
 The redesigned portfolio was published on 12 October 2026 at https://yashkamerkar14.github.io/. GitHub Actions run 38222391670 passed dependency installation, TypeScript checking, static build and Pages deployment for commit a29819a.
 

@@ -6,7 +6,7 @@ const icons: Record<string, string> = {
   AWS: "amazonwebservices", "Amazon Web Services (AWS)": "amazonwebservices",
   Azure: "azure", "Microsoft Azure": "azure", Docker: "docker",
   Kubernetes: "kubernetes", "Kubernetes (K8s)": "kubernetes",
-  "Next.js": "nextjs", TypeScript: "typescript", "React.js": "react", "React Flow": "react",
+  "Next.js": "nextjs", TypeScript: "typescript", React: "react", "React.js": "react", "React Flow": "react",
   PostgreSQL: "postgresql", "Neon Postgres": "postgresql", PyTorch: "pytorch", "scikit-learn": "scikitlearn",
 };
 

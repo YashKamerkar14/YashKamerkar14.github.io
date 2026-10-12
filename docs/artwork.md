@@ -13,6 +13,7 @@ The expressive portfolio uses original code-native engineering and robot artwork
 - `src/components/projects/research-cover.tsx`: original FlightSense case cover. Illustrative curves are not the paper's actual ROC plot.
 - `public/images/yash.webp`: the existing portrait.
 - `public/projects/context-window-newsroom.png`: actual repository screenshot (`docs/images/newsroom-floor.png`), shown in the project showcase. It is a screenshot, not a live embedded run.
+- `public/projects/mettle-benchmark.png`: actual screenshot of Mettle's live hero, captured at 1008 x 448 after its animated study counters settled. It is a project preview, not a live benchmark or an embedded GPU workload.
 - `public/favicon.svg`: original simple Y icon, replacing the blue YK flag.
 - `public/images/og.png`: browser capture of the current hero. Regenerate with `node scripts/capture-preview.cjs --social`, then rebuild.
 

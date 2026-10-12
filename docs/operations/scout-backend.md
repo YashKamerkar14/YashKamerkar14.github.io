@@ -4,6 +4,8 @@ Deployed on 12 October 2026 to the separate Vercel project `yash-0406/yash-portf
 
 Production origin: https://yash-portfolio-scout.vercel.app
 
+The 12 October 2026 Mettle update redeployed the catalog and source selector as `dpl_HiVcAZYb6p8H7Gq5ZvDn8Dc4nWk5`. The production alias, private provider key, 320-token response cap and spending checks remain the same. Anonymous status and portfolio CORS were checked without a paid completion. Sixteen mocked server checks verify the current backend, including Mettle's source, device qualifications and single-call limit.
+
 - `GET /api/agents/status`: connection presence, without model requests or credential values.
 - `POST /api/agents`: source-backed, streamed answers.
 - `OPTIONS`: exact-origin browser preflight, without provider requests.

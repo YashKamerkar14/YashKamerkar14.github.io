@@ -42,10 +42,10 @@ test("experience is the first full section and details open by keyboard", async 
   await expect(note).not.toHaveAttribute("open");
 });
 
-test("all three projects are visible together with concise summaries and research links",async({page})=>{
+test("all four projects are visible together with concise summaries and research links",async({page})=>{
   await page.goto("/#work");
-  await expect(page.locator(".project-card")).toHaveCount(3);
-  await expect(page.locator(".project-card h3")).toHaveText(["Context Window","Medical Bill Auditor","FlightSense"]);
+  await expect(page.locator(".project-card")).toHaveCount(4);
+  await expect(page.locator(".project-card h3")).toHaveText(["Context Window","Medical Bill Auditor","FlightSense","Mettle: Test your machine’s mettle"]);
   for(const card of await page.locator(".project-card").all()) {
     expect((await card.locator(".project-description").innerText()).length).toBeLessThan(180);
     expect(await card.locator(".project-tags li").count()).toBeLessThanOrEqual(4);

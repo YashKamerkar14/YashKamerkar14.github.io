@@ -77,7 +77,7 @@ Skills are listed without an inferred proficiency or seniority score. Project te
 
 ## Current selected projects
 
-The shared catalog at src/lib/projects.json contains Context Window, Medical Bill Auditor and FlightSense, in that order. All three are visible in one gallery. The detailed sources and evaluation qualifications are recorded in the [Context Window audit](context-window.md) and [Medical Bill Auditor audit](medical-bill-auditor.md). FlightSense retains its paper, repository and case-study links. Football analysis was removed from the application at the user's request.
+The shared catalog at src/lib/projects.json contains Context Window, Medical Bill Auditor, FlightSense and Mettle, in that order. All four are visible in one gallery. The detailed sources and evaluation qualifications are recorded in the [Context Window audit](context-window.md) and [Medical Bill Auditor audit](medical-bill-auditor.md). FlightSense retains its paper, repository and case-study links. Mettle has its live browser benchmark and source links; the device-specific study scope is recorded in the [Mettle audit](mettle.md). Football analysis was removed from the application at the user's request.
 
 The canonical PDF SHA-256 is E927FA3830B619796A441D03311FC5D4CD62D5B2D4E30A11DE1C4C0366FCD397. The hero's Production backend & AI systems line is backed by the listed employment; it does not claim an invented count or production scale for personal projects.
 

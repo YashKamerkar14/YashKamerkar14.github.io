@@ -1,6 +1,6 @@
 # Yash Kamerkar
 
-Software engineering and applied AI portfolio, with professional experience, three selected projects, and Scout, a source-backed project guide.
+Software engineering and applied AI portfolio, with professional experience, four selected projects, and Scout, a source-backed project guide.
 
 **[Live portfolio](https://yashkamerkar14.github.io/)** | [Resume](https://yashkamerkar14.github.io/Yash_Mahesh_Kamerkar_Resume.pdf)
 

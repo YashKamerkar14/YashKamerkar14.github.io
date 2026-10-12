@@ -19,7 +19,7 @@ const display = Anton({ subsets: ["latin"], weight: "400", variable: "--font-dis
 export const metadata: Metadata = {
   metadataBase: new URL("https://yashkamerkar14.github.io"),
   title: { default: "Yash Kamerkar — Software & AI Engineer", template: "%s — Yash Kamerkar" },
-  description: "Yash Kamerkar is a Software & AI Engineer at Uber. Explore backend engineering experience, Context Window, Medical Bill Auditor, and FlightSense research.",
+  description: "Yash Kamerkar is a Software & AI Engineer at Uber. Explore backend engineering experience, Context Window, Medical Bill Auditor, FlightSense research, and Mettle’s browser AI benchmark.",
   alternates: { canonical: "/" },
   openGraph: { type: "website", locale: "en_US", siteName: "Yash Kamerkar", title: "Yash Kamerkar — Software & AI Engineer", description: "I turn complexity into clarity. Explore Yash Kamerkar’s experience, projects, and research.", images: [{ url: "/images/og.png", width: 1200, height: 630, alt: "Yash Kamerkar’s illustrated paper room and engineering portfolio." }] },
   twitter: { card: "summary_large_image", creator: "@Yashrooney14" },

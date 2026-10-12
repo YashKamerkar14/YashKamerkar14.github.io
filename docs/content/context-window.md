@@ -17,4 +17,4 @@ The README reports 220 backend tests and free-tier hosting; the portfolio does n
 
 The current homepage uses one compact visual showcase with an actual newsroom screenshot, a one-sentence summary, four technologies, and the actual demo and repository links. The earlier architecture explorer and detailed evaluation panels were removed to reduce visual density. Scout's project catalog includes Context Window, and Scribe receives its exact demo URL and qualified evidence note.
 
-Context Window, Medical Bill Auditor and FlightSense appear together in one visible gallery. FlightSense is third and retains its paper, source and detailed case-study links.
+Context Window, Medical Bill Auditor, FlightSense and Mettle appear together in one visible gallery. FlightSense is third and retains its paper, source and detailed case-study links.
