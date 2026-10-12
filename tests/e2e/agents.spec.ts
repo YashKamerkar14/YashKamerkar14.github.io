@@ -15,8 +15,8 @@ test("Mettle has real destinations and its starter sends one question with sourc
  });
  await page.goto("/#work");
  const project=page.locator("#mettle");
- await expect(project.getByRole("link",{name:/Try it live/})).toHaveAttribute("href","https://yashkamerkar14.github.io/mettle/");
- await expect(project.getByRole("link",{name:/Code & findings/})).toHaveAttribute("href","https://github.com/YashKamerkar14/mettle");
+ await expect(project.getByRole("link",{name:/Live demo/})).toHaveAttribute("href","https://yashkamerkar14.github.io/mettle/");
+ await expect(project.getByRole("link",{name:/GitHub/})).toHaveAttribute("href","https://github.com/YashKamerkar14/mettle");
  await page.getByRole("button",{name:/Search .*portfolio/}).click();
  await page.getByRole("textbox",{name:"Search work, experience, skills, or contact"}).fill("mettle");
  await expect(page.locator(".search-results li")).toHaveCount(2);
