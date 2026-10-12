@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const zlib = require('node:zlib');
 require('@next/env').loadEnvConfig(require('node:path').resolve(__dirname,'..'));
-const {createAgentHandler} = require('../server/portfolio-agent.cjs');
+const {createAgentHandler} = require('../src/server/portfolio-agent.cjs');
 const handleAgent = createAgentHandler();
 const root = path.resolve(__dirname, '../out');
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.pdf': 'application/pdf', '.woff2': 'font/woff2', '.txt': 'text/plain', '.xml': 'application/xml' };

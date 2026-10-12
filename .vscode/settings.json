@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "out": true,
+    ".scout-deployment": true,
+    ".portfolio-history": true,
+    ".design-review": true,
+    "test-results": true,
+    "playwright-report": true
+  }
+}

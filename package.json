@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "node scripts/dev.cjs",
     "build": "next build",
-    "build:scout": "node scripts/build-scout-backend.cjs",
+    "build:scout": "node scripts/scout/build.cjs",
     "start": "node scripts/serve-export.cjs",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test:e2e": "playwright test",
-    "test:agents": "node --test tests/agent-server.test.cjs tests/scout-backend.test.cjs",
+    "test:agents": "node --test tests/server/*.test.cjs",
+    "capture": "node scripts/capture-preview.cjs",
     "preview": "node scripts/serve-export.cjs"
   },
   "dependencies": {
@@ -25,7 +26,6 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "lighthouse": "13.5.0",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2"
   }

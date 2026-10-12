@@ -1,12 +1,25 @@
+# Dependencies and generated application files
 node_modules/
 .next/
 out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Browser reports and preview captures
 test-results/
 playwright-report/
-*.tsbuildinfo
 .design-review/
+
+# Local deployment linkage and immutable rollback archive
 .portfolio-history/
 .scout-deployment/
 .vercel/
+
+# Private configuration; only the empty example belongs in Git
 .env*
 !.env.example
+
+# Editor and operating-system temporary files
+.DS_Store
+Thumbs.db
+*.log

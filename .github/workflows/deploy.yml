@@ -25,6 +25,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
+      - run: npm run test:agents
       - run: npm run build
         env:
           NEXT_PUBLIC_SCOUT_API_ORIGIN: ${{ vars.SCOUT_API_ORIGIN }}

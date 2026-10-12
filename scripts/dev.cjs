@@ -1,7 +1,7 @@
 const http = require('node:http');
 const {spawn} = require('node:child_process');
 require('@next/env').loadEnvConfig(require('node:path').resolve(__dirname,'..'));
-const {createAgentHandler} = require('../server/portfolio-agent.cjs');
+const {createAgentHandler} = require('../src/server/portfolio-agent.cjs');
 const port = Number(process.env.PORT || 3000);
 const handleAgent = createAgentHandler({allowedOrigins:['http://127.0.0.1:'+port,'http://localhost:'+port]});
 const api = http.createServer(async(req,res) => {
