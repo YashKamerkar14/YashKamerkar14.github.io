@@ -1,0 +1,49 @@
+[
+  {
+    "id": "context-window",
+    "section": "projects",
+    "label": "Autonomous AI newsroom",
+    "summary": "Eleven AI agents research, verify, and publish a daily AI briefing for engineers.",
+    "previewTags": ["Python", "LangGraph", "MCP", "Next.js"],
+    "image": "/projects/context-window-newsroom.png",
+    "imageAlt": "Context Window’s actual newsroom replay showing collaborating AI agents",
+    "name": "Context Window",
+    "repo": "context-window",
+    "url": "https://github.com/YashKamerkar14/context-window",
+    "status": "Live project",
+    "description": "An autonomous AI newsroom of 11 collaborating agents that gathers sources, checks claims against quoted evidence, and publishes a daily engineering briefing. A newsroom floor lets visitors watch real runs or replay their event logs.",
+    "demoUrl": "https://context-window-gamma.vercel.app/",
+    "note": "Repository-reported early evaluation: 59/60 fact-check verdicts agree with human labels (98.3%); 50/50 sampled published claims confirmed against sources by an AI assistant; 0/41 unsupported sentences and 0/21 repeated stories across three editions. These are small-sample results, not independently reproduced here. The README lists 220 backend tests. Email uses a test sender restricted to the account owner until a domain is verified.",
+    "tags": ["Python", "LangGraph", "Claude", "MCP", "FastAPI", "Neon Postgres", "pgvector", "Next.js", "React Flow", "Vercel", "GitHub Actions"]
+  },
+  {
+    "id": "medical-bill-auditor",
+    "section": "projects",
+    "label": "Agentic bill auditing",
+    "summary": "A LangGraph workflow checks synthetic medical bills against billing rules and explains findings with verified evidence.",
+    "previewTags": ["Python", "LangGraph", "MCP", "RAG"],
+    "name": "Medical Bill Auditor",
+    "repo": "medical-bill-auditor",
+    "url": "https://github.com/YashKamerkar14/medical-bill-auditor",
+    "status": "Public code + example demo",
+    "description": "An agentic research prototype for six billing-error checks, using deterministic rules, independent verification, corrective hybrid RAG, and a custom MCP evidence server. The public Streamlit demo runs rules-only checks on six synthetic examples; model-assisted matching and manual-grounded explanations run in a local installation.",
+    "demoUrl": "https://medical-bill-auditor-demo.streamlit.app/",
+    "note": "Supplied in Projects_Resume.docx and checked against the public README on 11 October 2026. Repository-reported synthetic evaluation: 100% exact bill findings for the full system versus 45% model-only and 75% ReAct on 75 held-out bills; 348 total synthetic cases; hybrid retrieval MRR 0.93 over 47 labelled queries; 29/29 held-out quotes verified, 23/23 unanswerable queries refused; 4,224/4,224 MCP lookups matched direct calls; 30/30 adversarial cases passed; 1,433/1,433 synthetic PDF line items parsed. Not independently reproduced and not evidence of performance on real bills. Public demo accepts no uploads, needs no model key and uses synthetic rule tables. Supplied demo URL could not be reached from the review environment; no uptime claim is made. The README contains an older contradictory no-hosted-demo limitation, superseded by its Public demo section.",
+    "tags": ["Python", "LangGraph", "RAG", "BM25", "RRF", "MCP", "Gemini", "SQLite FTS5", "Chroma", "Pydantic", "Streamlit"]
+  },
+  {
+    "id": "flightsense",
+    "section": "research",
+    "label": "Flight-delay research",
+    "summary": "Co-authored research connecting flight-delay prediction, cloud infrastructure, and conversational AI.",
+    "previewTags": ["Python", "AWS", "XGBoost"],
+    "name": "FlightSense",
+    "repo": "Flight-Delay-Prediction-using-Amazon-Sagemaker",
+    "url": "https://github.com/YashKamerkar14/Flight-Delay-Prediction-using-Amazon-Sagemaker",
+    "status": "Public code + research",
+    "description": "A co-authored flight-delay research platform with XGBoost prediction, an AWS data pipeline, a Streamlit dashboard, and a Bedrock assistant.",
+    "demoUrl": null,
+    "note": "Source code is public. No hosted demo URL is listed in the repository.",
+    "tags": ["Python", "AWS", "XGBoost"]
+  }
+]

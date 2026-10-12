@@ -1,0 +1,128 @@
+:root { --paper: #faf9f6; --ink: #252a2c; --muted: #636768; --rule: #dededa; --soft: #efefeb; --blue: #345dbc; }
+body { background: var(--paper); }
+.container { width: min(100% - 144px, 1200px); max-width: none; }
+.mono { font-size: 10px; letter-spacing: .025em; }
+.search-trigger { font-size: 12px; color: #51595c; }
+.search-trigger kbd { background: transparent; color: #636768; border-color: #dededa; font-size: 9px; }
+.text-link { font-size: 12px; color: #515b60; }
+.experience-item { grid-template-columns: 1fr 2.15fr; gap: 35px; padding-block: 30px; }
+.experience-body li { color: #596367; font-size: 14px; line-height: 1.9; }
+.experience-body li::before { color: #778487; }
+.experience-details summary { font-size: 11px; color: #55636a; }
+.full-toolkit, .toolkit-grid { border-color: #dcded7; }
+.toolkit-grid li { color: #596367; }
+.contact-section { background: #e9e7e0; border-color: #dad9d0; padding-block: 33px 44px; }
+.section-label { color: #576365; font-size: 11px; }
+.contact-heading { gap: 45px; padding-block: 42px; }
+.contact-heading h2 { font-weight: 400; font-size: clamp(43px, 4.7vw, 68px); line-height: 1.12; letter-spacing: -.04em; }
+.contact-heading h2 em { color: #445d65; font-size: 1.23em; }
+.contact-intro { margin-top: 22px; font-size: 13px; color: #5b6565; }
+.contact-arrow { display: grid; place-items: center; width: 112px; height: 112px; border: 1px solid #939f9e; border-radius: 50%; color: #455e65; margin-right: 22px; transition: background .2s, transform .3s; }
+.contact-arrow .arrow-icon { width: 47px; height: 47px; }
+.contact-arrow:hover { background: #faf9f6; transform: rotate(9deg); }
+.contact-bottom { border-color: #c9cfca; }
+.email-link { color: #44595e; font-size: 24px; }
+.copy-button, .copy-status, .contact-socials a { color: #56676b; }
+.footer-name { font-size: 13px; font-weight: 400; }
+.footer-name span { color: #44595e; }
+.footer-inner > .mono, .footer-inner > a.mono { color: #666f70; font-size: 9px; }
+.search-dialog { background: #faf9f6; border-color: #b7c4c4; }
+.search-dialog-top .mono, .search-count, .search-result-category { color: #5b6d70; }
+.search-dialog > input { border-color: #bbc7c7; background: #fff; }
+.search-dialog > input::placeholder, .search-results p { color: #607176; }
+.search-results a:hover { background: #eef0eb; }
+.search-dialog-bottom { background: #eceee8; color: #596b6e; border-color: #d4d9d3; }
+.editorial-case-cover { position: relative; height: auto; aspect-ratio: 2.2; background: #13243f; }
+.editorial-case-cover > img { width: 100%; height: 100%; object-fit: cover; }
+.case-header-bottom > p, .case-prose > p, .case-prose .source-note { color: #596367; }
+.architecture-explorer { background: #eef1eb; border-color: #d0d9d0; }
+.architecture-buttons button { color: #476052; border-color: #bbcbbb; }
+.architecture-buttons button[aria-pressed=true] { background: #3c5d4e; border-color: #3c5d4e; color: #fff; }
+.flow-node { background: #fafbf7; border-color: #c5d0c3; }
+.flow-node .mono, .flow-arrow, .architecture-description, .architecture-transcript p { color: #536d5c; }
+.evaluation-highlight { background: #28483e; color: #f0f5e9; }
+.evaluation-highlight .mono, .evaluation-highlight p { color: #d4e2d0; }
+
+@media (max-width: 1050px) {
+  .container { width: calc(100% - 80px); }
+  .experience-item { grid-template-columns: 1fr 2.2fr; }
+}
+@media (max-width: 850px) {
+  .experience-item { gap: 27px; grid-template-columns: 1fr 2.3fr; }
+  .experience-body li { font-size: 13px; }
+  .contact-heading h2 { font-size: 44px; }
+  .contact-arrow { width: 88px; height: 88px; margin-right: 0; }
+}
+@media (max-width: 650px) {
+  .container { width: calc(100% - 40px); }
+  html { scroll-padding-top: 86px; }
+  .search-trigger { margin-left: auto; }
+  .mobile-menu > summary { width: 33px; height: 33px; border-color: #cbd0ca; font-size: 16px; }
+  .mobile-menu nav { background: #faf9f6; border-color: #cbd0ca; border-radius: 6px; }
+  .editorial-case-cover { aspect-ratio: 1.2; height: auto; }
+  .editorial-case-cover > img { object-position: 64% center; }
+  .experience-item { display: grid; grid-template-columns: 1fr; gap: 18px; padding-block: 25px; }
+  .contact-section { padding-block: 29px 35px; }
+  .section-label { font-size: 9px; }
+  .section-label .mono { font-size: 9px; }
+  .contact-heading { padding-block: 32px; gap: 20px; }
+  .contact-heading h2 { font-size: clamp(29px, 8vw, 44px); }
+  .contact-arrow { width: 58px; height: 58px; flex-shrink: 0; align-self: flex-end; }
+  .contact-arrow .arrow-icon { width: 25px; height: 25px; }
+  .contact-intro { font-size: 12px; }
+  .email-link { font-size: clamp(15px, 4.4vw, 22px); }
+  .footer-inner > .mono, .footer-inner > a.mono { font-size: 8px; }
+}
+@media (max-width: 359px) {
+  .container { width: calc(100% - 32px); }
+}
+@container editorial-header (max-width: 850px) {
+  .search-trigger > span, .search-trigger > kbd { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-arrow { transition-duration: .01ms; }
+}
+@media print {
+  .contact-arrow { display: none; }
+}
+.editorial-case-cover { background: #142c4b; }
+.research-cover-content { position: relative; width: 100%; height: 100%; color: #edf3fc; overflow: hidden; background: radial-gradient(ellipse at 76% 42%, #335682 0%, #223d60 32%, #132c49 65%, #10263f 100%); }
+.research-cover-copy { position: absolute; left: 4.2%; top: 50%; transform: translateY(-50%); z-index: 1; }
+.research-cover-copy > .mono { display: block; font-size: 10px; letter-spacing: .06em; color: #cfdbed; margin-bottom: 33px; }
+.research-cover-copy > strong { display: block; font-weight: 400; font-size: clamp(48px, 5.9vw, 85px); line-height: 1; letter-spacing: -.055em; }
+.research-cover-copy > strong > span { color: #9cc1f5; }
+.research-cover-copy > p { margin-top: 26px; font-size: 23px; line-height: 1.5; letter-spacing: -.025em; color: #d0dfef; }
+.research-cover-credit { display: block; margin-top: 34px; font-size: 10px; color: #cbd9ea; }
+.research-route-art { position: absolute; right: 0; top: 50%; width: 51%; aspect-ratio: 5 / 4; transform: translateY(-50%); }
+.research-connections { width: 100%; height: 100%; }
+.research-route { position: absolute; inset: 0; list-style: none; margin: 0; padding: 0; }
+.research-route > li { position: absolute; display: flex; flex-direction: column; gap: 6px; }
+.research-route > li:nth-child(1) { top: calc(16.667% - 14px); left: calc(26.667% + 14px); }
+.research-route > li:nth-child(2) { top: calc(47.292% - 14px); right: calc(20.833% + 18px); align-items: flex-end; text-align: right; }
+.research-route > li:nth-child(3) { top: calc(83.125% - 14px); left: calc(34.333% + 14px); }
+.research-stage-number { font: 9px var(--font-mono), monospace; color: #bfceea; letter-spacing: .04em; }
+.research-route strong { font-size: 22px; line-height: 1.3; font-weight: 400; letter-spacing: -.025em; }
+.research-route li > span:last-child { font-size: 11px; color: #d0def0; }
+.research-cover-caption { position: absolute; left: 4.2%; bottom: 25px; font-size: 9px; color: #d0dced; }
+@media (max-width: 850px) {
+  .research-cover-copy > .mono { margin-bottom: 24px; font-size: 9px; }
+  .research-cover-copy > p { font-size: 18px; margin-top: 18px; }
+  .research-cover-credit { margin-top: 20px; font-size: 9px; }
+  .research-route strong { font-size: 17px; }
+  .research-route li > span:last-child { font-size: 9px; }
+  .research-stage-number { font-size: 8px; }
+}
+@media (max-width: 650px) {
+  .editorial-case-cover { aspect-ratio: auto; height: 445px; }
+  .research-cover-copy { left: 23px; top: 32px; transform: none; }
+  .research-cover-copy > .mono { margin-bottom: 20px; font-size: 8px; }
+  .research-cover-copy > strong { font-size: 46px; }
+  .research-cover-copy > p { font-size: 18px; margin-top: 16px; }
+  .research-cover-credit { margin-top: 14px; max-width: 210px; font-size: 9px; line-height: 1.7; }
+  .research-route-art { width: 240px; right: -13px; top: 215px; transform: none; }
+  .research-route strong { font-size: 15px; }
+  .research-route li > span:last-child { display: none; }
+  .research-route > li { gap: 4px; }
+  .research-cover-caption { left: 23px; bottom: 20px; max-width: 180px; line-height: 1.7; font-size: 9px; }
+}
+@media (max-width: 359px) { .research-cover-caption { max-width: 115px; } }

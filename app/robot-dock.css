@@ -1,0 +1,19 @@
+/* A small stable desk. Only local SVG joints animate, never its viewport position. */
+.robot-dock { display:none; position:fixed; right:12px; bottom:28px; width:112px; z-index:40; color:#253b37; opacity:0; visibility:hidden; transition:opacity .16s ease; }
+.dock-launch { display:flex; flex-direction:column; align-items:center; width:100%; padding:8px 7px 12px; border:1px solid #bdc8b7; border-radius:12px; background:#faf8edf5; box-shadow:0 5px 18px #20382b12; }
+.dock-robots { display:flex; align-items:end; gap:0; margin:0 -3px; }
+.dock-robots .agent-character { width:64px; height:70px; }
+.dock-caption { font:11px/1.7 var(--font-plex),monospace; margin-top:5px; }
+.dock-action { display:block; font-size:12px; margin-top:5px; color:#006d77; }
+.robot-motion-toggle { position:absolute; right:-7px; top:-29px; display:grid; place-items:center; width:44px; height:44px; border:0; background:transparent; color:#526a5d; z-index:2; }
+.robot-motion-toggle:hover { color:#006d77; }
+.hero-workshop > .robot-motion-toggle { top:-14px; right:0; }
+.paper-studio[data-robots-paused=true] .agent-character * { animation-play-state:paused!important; }
+.paper-studio[data-robots-paused=true] .agent-gaze { transform:none!important; }
+.handoff-paper { display:inline-block; width:21px; height:25px; background:#fffeef; border:1px solid #78976c; text-align:center; font:15px/25px var(--font-dm),sans-serif; box-shadow:2px 2px 0 #6b845320; }
+.agent-team[data-handoff=true] .handoff-paper { animation:source-handoff 1.5s ease-in-out infinite; }
+@keyframes source-handoff { 0%,100% { transform:translateX(-5px) rotate(-5deg); } 50% { transform:translateX(5px) rotate(5deg); } }
+@media(min-width:1400px) { .robot-dock { display:block; }.paper-studio[data-room-visible=false] .robot-dock { opacity:1; visibility:visible; }.paper-studio:has(dialog[open]) .robot-dock { opacity:0; visibility:hidden; } }
+@media(max-width:760px) { .hero-workshop { position:relative!important; }.hero-workshop > .robot-motion-toggle { top:-22px; right:-5px; } }
+@media(prefers-reduced-motion:reduce) { .robot-dock { transition:none; }.handoff-paper { animation:none!important; }.robot-motion-toggle { display:none; } }
+@media print { .robot-dock,.robot-motion-toggle { display:none!important; } }

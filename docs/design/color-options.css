@@ -1,0 +1,55 @@
+/* Review-only palettes. Injected by preview-colors.cjs, never loaded by the portfolio. */
+:root[data-color-preview="lilac"] {
+  --paper:#f4efff; --ink:#262039; --muted:#655674; --blue:#6340b6; --rule:#bdb0d4;
+  --preview-accent:#6340b6; --preview-grid:#5d40791c; --preview-ambient:#bda0ec;
+  --preview-header:#faf7fff5; --preview-note:#fffbea; --preview-panel:#e5ddf8;
+  --preview-panel-two:#edf0c5; --preview-panel-three:#e0e8fc; --preview-border:#b5a7cb;
+  --preview-button:#382752; --preview-button-ink:#fffaf2; --preview-floor:#ac9dbb90;
+  --preview-mark:#fffbea; --preview-contact:#30233f; --preview-contact-ink:#f5efff;
+  --preview-art-back:#ddd4ed; --preview-art-front:#fbf8ff; --preview-art-ai-back:#d2bafa;
+  --preview-art-ai-front:#e7dcff; --preview-art-light:#8f6ad4;
+}
+:root[data-color-preview="midnight"] {
+  --paper:#131f2a; --ink:#eaf0f5; --muted:#b2c3cf; --blue:#a3e4e5; --rule:#506775;
+  --preview-accent:#a3e4e5; --preview-grid:#b1d1de20; --preview-ambient:#4d91ad;
+  --preview-header:#1a2b38f5; --preview-note:#223743; --preview-panel:#233443;
+  --preview-panel-two:#293c46; --preview-panel-three:#213540; --preview-border:#617b8a;
+  --preview-button:#bce6da; --preview-button-ink:#162c32; --preview-floor:#8bb4c268;
+  --preview-mark:#43525d; --preview-contact:#0a1520; --preview-contact-ink:#eaf0f5;
+  --preview-art-back:#334857; --preview-art-front:#263947; --preview-art-ai-back:#3c606b;
+  --preview-art-ai-front:#284b57; --preview-art-light:#8cdddd;
+}
+:root[data-color-preview] .paper-studio {
+  --accent:var(--preview-accent); --grid-color:var(--preview-grid); --ambient-color:var(--preview-ambient);
+  --light-color:var(--preview-note);
+}
+:root[data-color-preview] .paper-header { background:var(--preview-header); border-color:var(--preview-border); }
+:root[data-color-preview] :is(.paper-toolbar > nav a,.room-eyebrow,.chapter-kicker,.room-positioning,.room-intro,.social-icon-links a,.identity-note .chapter-kicker,.identity-note > p,.workshop-title,.robot-name,.room-footnote,.employment-status,.employment-label p,.employment-place,.employment-focus,.employment-note .experience-body li,.project-label,.project-description,.project-tags li,.project-preview-note,.research-shelf > div > p,.paper-portrait figcaption,.about-story > p,.education-slip p,.education-slip small,.toolkit-notes p,.toolkit-grid li) { color:var(--muted); }
+:root[data-color-preview] :is(.paper-toolbar > nav a[aria-current],.experience-details summary,.research-shelf nav a,.full-toolkit > summary,.social-icon-links a:hover) { color:var(--accent); }
+:root[data-color-preview] .primary-link { background:var(--preview-button); border-color:var(--preview-button); color:var(--preview-button-ink)!important; }
+:root[data-color-preview] .room-art { color:var(--ink); }
+:root[data-color-preview] .room-floor { color:var(--preview-floor); }
+:root[data-color-preview] .identity-note::before,
+:root[data-color-preview] :is(.research-shelf,.paper-portrait,.paper-studio .toolkit-grid,.mobile-menu > nav) { background:var(--preview-note); border-color:var(--preview-border); }
+:root[data-color-preview] .identity-note::after,
+:root[data-color-preview] .paper-portrait::before { background:color-mix(in srgb,var(--preview-border) 65%,transparent); }
+:root[data-color-preview] .identity-note a { border-color:var(--preview-border); }
+:root[data-color-preview] :is(.employment-note.experience-item,.project-card,.toolkit-notes article) { background-color:var(--preview-panel); border-color:var(--preview-border); }
+:root[data-color-preview] :is(.employment-note:nth-child(2),.project-card:nth-child(3n+2),.toolkit-notes article:nth-child(2)) { background-color:var(--preview-panel-two); }
+:root[data-color-preview] :is(.employment-note:nth-child(3),.project-card:nth-child(3n+3),.toolkit-notes article:nth-child(3)) { background-color:var(--preview-panel-three); }
+:root[data-color-preview] .experience-body mark { color:var(--ink); background:var(--preview-mark); }
+:root[data-color-preview] .experience-body li::before { color:var(--accent); }
+:root[data-color-preview] :is(.project-tags li,.project-browser,.education-slip,.underlined-link) { border-color:var(--preview-border); }
+:root[data-color-preview] .project-links a { color:var(--ink); background:var(--preview-note); border-color:var(--preview-border); }
+:root[data-color-preview] .project-links a:first-child { background:var(--preview-button); color:var(--preview-button-ink); }
+:root[data-color-preview] .project-browser-bar { background:var(--preview-note); color:var(--ink); border-color:var(--preview-border); }
+:root[data-color-preview] .contact-chapter { background:var(--preview-contact); color:var(--preview-contact-ink); }
+:root[data-color-preview] :is(.contact-chapter .chapter-kicker,.paper-footer) { color:var(--preview-contact-ink); }
+:root[data-color-preview] .contact-chapter h2 em { color:#c9dff4; }
+:root[data-color-preview] .contact-paper > div:first-child { background:var(--preview-note); color:var(--ink); }
+:root[data-color-preview] :is(.email-link,.contact-paper .copy-button,.contact-paper .copy-status) { color:var(--ink); }
+:root[data-color-preview] .hero-drawing [fill="#e0dfd1"] { fill:var(--preview-art-back); }
+:root[data-color-preview] .hero-drawing [fill="#f6f5e9"] { fill:var(--preview-art-front); }
+:root[data-color-preview] .hero-drawing [fill="#a5d8dc"] { fill:var(--preview-art-ai-back); }
+:root[data-color-preview] .hero-drawing [fill="#c3e9e8"] { fill:var(--preview-art-ai-front); }
+:root[data-color-preview] .hero-drawing [fill="#00b8cc"] { fill:var(--preview-art-light); }

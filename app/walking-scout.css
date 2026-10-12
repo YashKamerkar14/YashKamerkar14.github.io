@@ -1,0 +1,21 @@
+/* Scout's path lives entirely on the empty hero floor. */
+@media(min-width:761px) {
+ .room-stage { padding-bottom:245px; }
+ .hero-workshop { position:absolute; top:auto; bottom:50px; left:0; right:auto; width:calc(100% - 390px); height:160px; }
+}
+.scout-floor { position:relative; width:100%; height:160px; }
+.scout-walkway { position:relative; height:123px; width:min(100%,560px); }
+.scout-walker { position:absolute; left:0; top:0; width:112px; height:122px; border:0; padding:0; background:transparent; cursor:pointer; border-radius:22px; touch-action:manipulation; }
+.scout-orientation { display:block; transform-origin:center; }
+.scout-walker .agent-character { width:112px; height:122px; }
+.scout-walker .robot-leg-left { transform-origin:88px 165px; }.scout-walker .robot-leg-right { transform-origin:127px 165px; }
+.scout-walker .agent-body { transform-origin:center; }
+.scout-floor .scout-invite { position:absolute; left:0; bottom:0; width:auto; padding:0; }
+.scout-invite .desk-caption { min-height:44px; font-size:14px; background:#fbf9ef; }
+.scout-floor > .robot-motion-toggle { top:auto; bottom:0; left:232px; right:auto; }
+.paper-studio:has(.scout-floor[data-visible=true]) .robot-dock { opacity:0; visibility:hidden; }
+.paper-studio:has(.scout-floor[data-walking=false]) .scout-walker .agent-character * { animation-play-state:paused; }
+@media(max-width:1100px) and (min-width:761px) { .hero-workshop { width:calc(100% - 320px); bottom:48px; }.hero-workshop .scout-invite { flex-direction:row; }.scout-walkway { width:100%; } }
+@media(max-width:900px) and (min-width:761px) { .hero-workshop { width:calc(100% - 285px); } }
+@media(max-width:760px) { .hero-workshop { margin-top:12px; }.scout-walkway { width:min(100%,300px); }.scout-floor { height:160px; }.hero-workshop .scout-invite { width:auto; }.hero-workshop .scout-invite .desk-caption { padding:0 11px; } }
+@media print { .scout-floor { display:none; } }

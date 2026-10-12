@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.design-review/
+.portfolio-history/
+.scout-deployment/
+.vercel/
+.env*
+!.env.example

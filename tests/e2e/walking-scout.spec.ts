@@ -1,0 +1,54 @@
+import {test,expect} from "@playwright/test";
+
+test("Scout walks inside the floor and pauses for hover, focus, dialog and the motion control",async({page})=>{
+  await page.setViewportSize({width:1440,height:1100});
+  let questions=0;
+  await page.route("**/api/agents",route=>{questions++;return route.fulfill({status:500,json:{error:"No paid calls"}});});
+  await page.goto("/");
+  const robot=page.getByRole("button",{name:"Ask Scout about my projects",exact:true});
+  const floor=page.locator(".scout-floor");
+  await expect(floor).toHaveAttribute("data-walking","true");
+  await expect(robot.locator(".robot-workbench")).toHaveCount(0);
+  const before=(await robot.boundingBox())!.x;
+  await expect.poll(async()=>(await robot.boundingBox())!.x-before).toBeGreaterThan(15);
+  const path=await page.locator(".scout-walkway").boundingBox();
+  const bounds=await robot.boundingBox();
+  expect(bounds!.x).toBeGreaterThanOrEqual(path!.x-1);
+  expect(bounds!.x+bounds!.width).toBeLessThanOrEqual(path!.x+path!.width+1);
+  const hoverBounds=(await robot.boundingBox())!;
+  await page.mouse.move(hoverBounds.x+hoverBounds.width/2,hoverBounds.y+hoverBounds.height/2);
+  await expect(floor).toHaveAttribute("data-walking","false");
+  expect(await robot.evaluate(el=>el.getAnimations({subtree:true}).filter(animation=>animation.constructor.name!=="CSSTransition").every(animation=>animation.playState==="paused"))).toBeTruthy();
+  await robot.click();
+  await expect(page.getByRole("dialog",{name:/Small team/})).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(robot).toBeFocused();
+  await page.mouse.move(1300,150);
+  await page.locator(".header-name").focus();
+  await expect(floor).toHaveAttribute("data-walking","true");
+  await floor.getByRole("button",{name:"Pause robot animation"}).click();
+  await expect(floor).toHaveAttribute("data-walking","false");
+  await floor.getByRole("button",{name:"Resume robot animation"}).click();
+  await expect(floor).toHaveAttribute("data-walking","true");
+  await page.locator("#experience").evaluate(el=>el.scrollIntoView({block:"start"}));
+  await expect(floor).toHaveAttribute("data-walking","false");
+  expect(questions).toBe(0);
+});
+
+test("reduced motion cancels the walking routine and phone Scout stays inside the page",async({page})=>{
+  await page.setViewportSize({width:390,height:844});
+  await page.goto("/");
+  const robot=page.locator(".scout-walker");
+  await robot.scrollIntoViewIfNeeded();
+  await expect(page.locator(".scout-floor")).toHaveAttribute("data-walking","true");
+  await page.emulateMedia({reducedMotion:"reduce"});
+  await expect(page.locator(".scout-floor")).toHaveAttribute("data-walking","false");
+  expect(await robot.evaluate(el=>el.getAnimations().length)).toBe(0);
+  const track=await page.locator(".scout-walkway").boundingBox();
+  expect(track!.x).toBeGreaterThanOrEqual(0);
+  expect(track!.x+track!.width).toBeLessThanOrEqual(390);
+  await robot.click();
+  await expect(page.getByRole("dialog",{name:/Small team/})).toBeVisible();
+  await page.keyboard.press("Escape");
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBeTruthy();
+});
